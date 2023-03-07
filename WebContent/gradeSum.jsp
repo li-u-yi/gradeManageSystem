@@ -56,7 +56,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                             </a>
                         </li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item">
                             <a href="gradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
@@ -71,7 +71,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         </li>
 
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item active">
                             <a href="gradeSum.jsp" class="sidebar-link">
                                 <i class="bi bi-bar-chart-fill"></i>
                                 <span>成绩统计</span>
@@ -101,9 +101,9 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>成绩查询</h3>
+                            <h3>成绩统计</h3>
                             <p class="text-subtitle text-muted">
-                                成绩查询列表
+                                成绩统计列表
                             </p>
                         </div>
 
@@ -114,65 +114,113 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         <div class="card-header"></div>
                         <div class="card-body">
                             <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                <form action="gradeSearch.jsp">
-                                <div class="dataTable-top">
-                                    <div class="dataTable-search">
-                                        <input class="dataTable-input" placeholder="输入考试编号" type="text">
+                                <div class="row">
+                                    <div class="col-md-3 mb-4">
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="inputGroupSelect01">排序字段</label>
+                                            <select class="form-select" id="inputGroupSelect">
+                                                <option selected="">--</option>
+                                                <option value="1">成绩</option>
+                                                <option value="2">班级</option>
+                                                <option value="3">姓名</option>
+                                                <option value="4">专业</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="inputGroupSelect01">排序方式</label>
+                                            <select class="form-select" id="inputGroupSelect01">
+                                                <option selected="">--</option>
+                                                <option value="1">升序</option>
+                                                <option value="2">降序</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1 mb-1">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
+                                            排序
+                                        </button>
+                                    </div>
+                                    <div class="col-md-1 mb-4"></div>
+                                    <div class="col-md-4 mb-4">
+                                        <input class="dataTable-input " placeholder="输入查询字段" type="text">
+                                        <button type="submit" class="btn btn-light-secondary me-1 mb-1">
                                             查询
                                         </button>
                                     </div>
+
                                 </div>
-                                </form>
+
                                 <div class="dataTable-container">
-                                    <table class="table table-striped dataTable-table" id="table1">
+                                    <table class="table table-striped dataTable-table" id="table2">
                                         <thead>
                                         <tr>
-                                            <th data-sortable="" style="width: 36.2451%;">
+                                            <th data-sortable="" style="width: 15%;">
+                                                <a >考试编号</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 10%;">
+                                                <a >姓名</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 15%;">
+                                                <a >专业</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 15%;">
                                                 <a >课程名称</a>
                                             </th>
-                                            <th data-sortable="" style="width: 12.0623%;">
+                                            <th data-sortable="" style="width: 12%;">
                                                 <a >课程类别</a>
                                             </th>
-                                            <th data-sortable="" style="width: 18.8716%;">
+                                            <th data-sortable="" style="width: 15%;">
                                                 <a >考试日期</a>
                                             </th>
-                                            <th data-sortable="" style="width: 16.4397%;">
-                                                <a >成绩</a>
+                                            <th data-sortable="" style="width: 9%;">
+                                                <a>成绩</a>
                                             </th>
-                                            <th data-sortable="" style="width: 16.4397%;">
-                                                <a>是否通过</a>
+                                            <th data-sortable="" style="width: 13%;">
+                                                <a>录入状态</a>
                                             </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>数据库设计</td>
-                                                <td>必修</td>
-                                                <td>2022-4-23</td>
-                                                <td>65</td>
-                                                <td>
-                                                <span class="badge bg-success">通过</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>计算机网络</td>
-                                                <td>选修</td>
-                                                <td>2022-4-13</td>
-                                                <td>55</td>
-                                                <td>
-                                                    <span class="badge bg-danger">未通过</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>软件开发</td>
-                                                <td>必修</td>
-                                                <td>2022-3-23</td>
-                                                <td>89</td>
-                                                <td>
-                                                    <span class="badge bg-success">通过</span>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>09190105</td>
+                                            <td>张余</td>
+                                            <td>信息管理</td>
+                                            <td>数据库设计</td>
+                                            <td>必修</td>
+                                            <td>2022-4-23</td>
+                                            <td>65</td>
+                                            <td>
+                                                <span class="badge bg-success">已录入</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>0918099</td>
+                                            <td>李雷雷</td>
+                                            <td>信息系统</td>
+                                            <td>计算机网络</td>
+                                            <td>选修</td>
+                                            <td>2022-4-13</td>
+                                            <td>55</td>
+                                            <td>
+                                                <span class="badge bg-danger">未录入</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>0914099</td>
+                                            <td>王余</td>
+                                            <td>大数据管理</td>
+                                            <td>软件开发</td>
+                                            <td>必修</td>
+                                            <td>2022-3-23</td>
+                                            <td>89</td>
+                                            <td>
+                                                <span class="badge bg-success">已录入</span>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
