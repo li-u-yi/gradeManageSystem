@@ -182,6 +182,12 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             <th data-sortable="" style="width: 13%;">
                                                 <a>录入状态</a>
                                             </th>
+                                            <th data-sortable="" style="width: 13%;">
+                                                <a>操作</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 13%;">
+                                                <a>操作</a>
+                                            </th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -194,7 +200,13 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             <td>2022-4-23</td>
                                             <td>65</td>
                                             <td>
-                                                <span class="badge bg-success">已录入</span>
+                                                <a href="#" class="badge bg-success">已录入</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge bg-warning">修改</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge bg-danger">删除</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -206,7 +218,13 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             <td>2022-4-13</td>
                                             <td>55</td>
                                             <td>
-                                                <span class="badge bg-danger">未录入</span>
+                                                <a href="#" class="badge bg-secondary">未录入</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge bg-warning">修改</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge bg-danger">删除</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -218,7 +236,13 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             <td>2022-3-23</td>
                                             <td>89</td>
                                             <td>
-                                                <span class="badge bg-success">已录入</span>
+                                                <a href="#" class="badge bg-success">已录入</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge bg-warning">修改</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge bg-danger">删除</a>
                                             </td>
                                         </tr>
                                         </tbody>
