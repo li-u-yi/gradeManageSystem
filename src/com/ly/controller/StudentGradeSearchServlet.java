@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -34,10 +35,12 @@ public class StudentGradeSearchServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String examNum = request.getParameter("exam_num");
         ExamService examService = new ExamService();
-        User user = (User) request.getSession().getAttribute("loginUser");
         List<ScoreDto> scores = examService.getExamList(examNum);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
         if (!scores.isEmpty()) {
-            // 查询成功，迭代输出成绩列表，而学生编号只对应一个成绩
+            // 查询成功,传回scores对象列表
             request.setAttribute("scores", scores);
             request.getRequestDispatcher("gradeSearch.jsp").forward(request, response);
         }else {
@@ -45,6 +48,7 @@ public class StudentGradeSearchServlet extends HttpServlet {
             out.print("<script language='JavaScript'>alert('查询失败，请检查考试编号是否正确');location.href='gradeSearch.jsp';</script>");
 
         }
+
     }
 
     /**
@@ -52,7 +56,7 @@ public class StudentGradeSearchServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        doGet(request, response);
+        doPost(request,response);
     }
 
 }

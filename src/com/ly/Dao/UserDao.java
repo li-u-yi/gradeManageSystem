@@ -21,7 +21,7 @@ public class UserDao {
             pre = con.prepareStatement(sql);
             pre.setString(1, userid);
             pre.setString(2, password);
-            pre.setString(3,role);
+            pre.setString(3, role);
             resultSet = pre.executeQuery();
             while (resultSet.next()) {
                 Integer uid = resultSet.getInt("uid");

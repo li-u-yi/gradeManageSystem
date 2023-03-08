@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 
@@ -122,63 +123,51 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                     <table class="table table-striped dataTable-table" id="table1">
                                         <thead>
                                         <tr>
-                                            <th data-sortable="" style="width: 36.2451%;">
+                                            <th data-sortable="" style="width: 8.8716%;">
+                                                <a >姓名</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 10.8716%;">
+                                                <a >专业</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 10.8716%;">
+                                                <a >班级</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 10.2451%;">
                                                 <a >课程名称</a>
                                             </th>
-                                            <th data-sortable="" style="width: 12.0623%;">
+                                            <th data-sortable="" style="width: 10.0623%;">
                                                 <a >课程类别</a>
                                             </th>
-                                            <th data-sortable="" style="width: 18.8716%;">
+                                            <th data-sortable="" style="width: 10.8716%;">
                                                 <a >考试日期</a>
                                             </th>
-                                            <th data-sortable="" style="width: 16.4397%;">
+                                            <th data-sortable="" style="width: 10.8716%;">
+                                                <a >考试时间</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 7.4397%;">
                                                 <a >成绩</a>
                                             </th>
-                                            <th data-sortable="" style="width: 16.4397%;">
+                                            <th data-sortable="" style="width: 10.4397%;">
                                                 <a>是否通过</a>
                                             </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${list}" var="clas">
+                                        <c:forEach var="score" items="${scores}" varStatus="status" >
                                             <tr>
-                                                <th scope="row"><%=++i %></th>
-                                                <td><a  href='classinforlet?hao=${clas.hao} ' >${clas.name}</a>
-                                                <td>${clas.hao}</td>
-                                                <td>${clas.tname}</td>
-                                                <td>${clas.person}</td>
-                                                <td>${clas.chose}</td>
-
-
+                                                <td>${score.stuName}</td>
+                                                <td>${score.major}</td>
+                                                <td>${score.stuClass}</td>
+                                                <td>${score.courseName}</td>
+                                                <td>${score.courseType}</td>
+                                                <td>${score.date}</td>
+                                                <td>${score.time}</td>
+                                                <td>${score.score}</td>
+                                                <td>
+                                                <span class="badge bg-${score.color}">${score.passOrNot}</span>
+                                                </td>
                                             </tr>
                                         </c:forEach>
-                                        <tr>
-                                                <td>数据库设计</td>
-                                                <td>必修</td>
-                                                <td>2022-4-23</td>
-                                                <td>65</td>
-                                                <td>
-                                                <span class="badge bg-success">通过</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>计算机网络</td>
-                                                <td>选修</td>
-                                                <td>2022-4-13</td>
-                                                <td>55</td>
-                                                <td>
-                                                    <span class="badge bg-danger">未通过</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>软件开发</td>
-                                                <td>必修</td>
-                                                <td>2022-3-23</td>
-                                                <td>89</td>
-                                                <td>
-                                                    <span class="badge bg-success">通过</span>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

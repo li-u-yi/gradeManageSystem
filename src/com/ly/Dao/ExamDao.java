@@ -22,7 +22,7 @@ public class ExamDao {
 
         try {
             con = JDBCUtils.getConnection();
-            String sql = "select * from (exam inner join student inner join course )where exam_num = ? ";
+            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id where exam_num = ? ";
             pre = con.prepareStatement(sql);
             pre.setString(1, examNum);
             resultSet = pre.executeQuery();
@@ -36,7 +36,14 @@ public class ExamDao {
                 scoreDto.setTime(resultSet.getTime("time"));
                 scoreDto.setStuClass(resultSet.getInt("stu_class"));
                 scoreDto.setMajor(resultSet.getString("major"));
-
+                scoreDto.setCourseType(resultSet.getString("course_type"));
+                if(resultSet.getInt("score")>60){
+                    scoreDto.setPassOrNot("通过");
+                    scoreDto.setColor("success");
+                }else{
+                    scoreDto.setColor("danger");
+                    scoreDto.setPassOrNot("未通过");
+                }
                 res.add(scoreDto);
             }
         } catch (SQLException e) {
