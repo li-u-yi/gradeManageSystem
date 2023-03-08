@@ -39,21 +39,22 @@
                 <p class="auth-subtitle mb-5">
                     management system
                 </p>
-                <form action="signUp.jsp">
+                <form action="loginCheckServlet">
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="text" class="form-control form-control-xl" placeholder="Username">
+                        <input type="text" class="form-control form-control-xl" name="userid"placeholder="输入账号">
                         <div class="form-control-icon">
                             <i class="bi bi-person"></i>
                         </div>
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <input type="password" class="form-control form-control-xl" placeholder="Password">
+                        <input type="password" class="form-control form-control-xl" name="password" placeholder="输入密码">
                         <div class="form-control-icon">
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
                     <div class="form-check form-check-lg d-flex align-items-end">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+                        <input type="hidden" name="role" value="1">
+                        <input class="form-check-input me-2" type="checkbox" value="2"  name="role" id="flexCheckDefault">
                         <label class="form-check-label text-gray-600" for="flexCheckDefault">
                             我是管理员
                         </label>

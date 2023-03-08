@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class Exam {
     //考试编号，考生报名后自动生成
-    private int examNum;
+    private String examNum;
     private int courseId;
     private int manId;
     private int stuId;
@@ -13,11 +13,11 @@ public class Exam {
     private Time time;
     private int score;
 
-    public int getExamNum() {
+    public String getExamNum() {
         return examNum;
     }
 
-    public void setExamNum(int examNum) {
+    public void setExamNum(String examNum) {
         this.examNum = examNum;
     }
 

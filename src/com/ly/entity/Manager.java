@@ -2,7 +2,7 @@ package com.ly.entity;
 
 public class Manager {
     private int manId;
-    private String psw;
+    private String uid;
 
     public int getManId() {
         return manId;
@@ -12,11 +12,11 @@ public class Manager {
         this.manId = manId;
     }
 
-    public String getPsw() {
-        return psw;
+    public String getUid() {
+        return uid;
     }
 
-    public void setPsw(String psw) {
-        this.psw = psw;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

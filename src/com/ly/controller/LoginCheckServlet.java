@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ly.entity.User;
+import com.ly.service.UserService;
 import com.ly.utils.JDBCUtils;
 
 @WebServlet({"/loginCheckServlet"})
@@ -27,53 +29,29 @@ public class LoginCheckServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String checkCode = (String)request.getSession(true).getAttribute("Verify");
-        String Verify = request.getParameter("Verify");
-        String rememberMe = request.getParameter("rememberMe");
+        String userid = request.getParameter("userid");
+        String password = request.getParameter("password");
+        String role = request.getParameter("role");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
-        if (checkCode != null && checkCode.equalsIgnoreCase(Verify)) {
-            String name = request.getParameter("userid");
-            String psw = request.getParameter("password");
 
-            try {
-                String url = "jdbc:mysql://localhost:3306/workers?useUnicode=true&characterEncoding=UTF-8";
-                Connection conn = JDBCUtils.getConnection();
-                String str = "select uid,psw,role from manager where uid = '" + name + "'" + "and psw= '" + psw + "'";
-                PreparedStatement stmt = conn.prepareStatement(str);
-                ResultSet rs = stmt.executeQuery(str);
-                RequestDispatcher dispatcher;
-                if (rs.next()) {
-                    dispatcher = request.getRequestDispatcher("/manager.jsp");
-                    if (rememberMe != null) {
-                        Cookie cookie1 = new Cookie("userid", name);
-                        cookie1.setMaxAge(60);
-                        response.addCookie(cookie1);
-                        Cookie cookie2 = new Cookie("password", psw);
-                        cookie2.setMaxAge(60);
-                        response.addCookie(cookie2);
-                        request.setAttribute("message", "登陆成功");
-                        dispatcher.forward(request, response);
-                    } else {
-                        request.setAttribute("message", "登陆成功");
-                        dispatcher.forward(request, response);
-                    }
-                } else {
-                    request.setAttribute("message", "密码错误");
-                    dispatcher = request.getRequestDispatcher("login.jsp");
-                    dispatcher.forward(request, response);
-                }
-
-                JDBCUtils.close(rs, stmt, conn);
-            } catch (Exception var16) {
-                var16.printStackTrace();
+        UserService userService = new UserService();
+        User res = userService.loginCheck(userid, password, role);
+        if (res != null) {
+            //登陆成功
+            if (role == "1") {//学生账号--跳转学生登陆界面
+                request.getSession().setAttribute("message", "登陆成功");
+                request.getRequestDispatcher("signUp.jsp").forward(request, response);
+            } else if (role == "2") {//管理员账号--跳转管理员登陆界面
+                request.getSession().setAttribute("message", "登陆成功");
+                request.getRequestDispatcher("gradeInsert.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("message", "验证码错误");
-            PrintWriter out = response.getWriter();
-            out.println("<script type='text/javascript' >alert('请重新输入验证码!');</script>");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            //登陆失败
+            request.setAttribute("msg", "登陆失败，请检查用户名和密码是否正确");
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-
     }
 }
+
+
