@@ -2,7 +2,7 @@
 <%@page import="java.sql.Connection" %>
 <%@page import="java.sql.Statement" %>
 <%@page import="java.sql.DriverManager" %>
-<%@page import="controller.myjavabean.JDBCUtils" %>
+<%@page import="com.ly.utils.JDBCUtils" %>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

@@ -1,5 +1,5 @@
 
-package controller.servlet;
+package com.ly.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.myjavabean.JDBCUtils;
+import com.ly.utils.JDBCUtils;
 
 @WebServlet({"/UpdateServlet"})
 public class UpdateServlet extends HttpServlet {

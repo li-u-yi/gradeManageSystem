@@ -1,5 +1,5 @@
 <%@page import="java.sql.*"%>
-<%@page import="controller.myjavabean.JDBCUtils" %>
+<%@page import="com.ly.utils.JDBCUtils" %>
 <%@page import="java.sql.ResultSet" %>
 <%@page import="java.sql.Connection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

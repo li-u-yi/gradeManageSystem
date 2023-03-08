@@ -1,4 +1,4 @@
-package controller.servlet;
+package com.ly.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.myjavabean.JDBCUtils;
+import com.ly.utils.JDBCUtils;
 
 @WebServlet({"/loginCheckServlet"})
-public class loginCheckServlet extends HttpServlet {
+public class LoginCheckServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public loginCheckServlet() {
+    public LoginCheckServlet() {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
