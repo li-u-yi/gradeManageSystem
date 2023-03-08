@@ -52,15 +52,22 @@
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
-                    <div class="form-check form-check-lg d-flex align-items-end">
-                        <input type="hidden" name="role" value="1">
-                        <input class="form-check-input me-2" type="checkbox" value="2"  name="role" id="flexCheckDefault">
-                        <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                            我是管理员
-                        </label>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                学生
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                管理员
+                            </label>
+                        </div>
                     </div>
                     <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" >
-                        Log in
+                        登陆
                     </button>
                 </form>
 

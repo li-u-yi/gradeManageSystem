@@ -63,13 +63,6 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="gradeInsert.jsp" class="sidebar-link">
-                                <i class="bi bi-journal-check"></i>
-                                <span>成绩录入</span>
-                            </a>
-                        </li>
-
 
                         <li class="sidebar-item">
                             <a href="gradeSum.jsp" class="sidebar-link">

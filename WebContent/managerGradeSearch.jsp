@@ -49,23 +49,22 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active">
-                            <a href="signUp.jsp" class="sidebar-link">
-                                <i class="bi bi-pen-fill"></i>
-                                <span>考试报名</span>
-
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item ">
-                            <a href="gradeSearch.jsp" class="sidebar-link">
+                            <a href="managerGradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
                             </a>
                         </li>
 
+                        <li class="sidebar-item">
+                            <a href="managerGradeInsert.jsp" class="sidebar-link">
+                                <i class="bi bi-journal-check"></i>
+                                <span>成绩录入</span>
+                            </a>
+                        </li>
+
 
                         <li class="sidebar-item">
-                            <a href="gradeSum.jsp" class="sidebar-link">
+                            <a href="managerGradeSum.jsp" class="sidebar-link">
                                 <i class="bi bi-bar-chart-fill"></i>
                                 <span>成绩统计</span>
                             </a>
@@ -85,50 +84,92 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div>
         </div>
         <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
             <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>考试报名</h3>
+                            <h3>成绩查询</h3>
                             <p class="text-subtitle text-muted">
-                                恭喜你，报名成功！
+                                成绩查询列表
                             </p>
                         </div>
 
                     </div>
                 </div>
                 <section class="section">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p>
-                                        请妥善保存考试编号，用于后续成绩查询
-                                    </p>
-                                    <div class="accordion" id="accordionExample">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    考试编号
-                                                </button>
-                                            </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                                                <div class="accordion-body">
-                                                    <strong>This is the first item's accordion body.</strong>
-                                                    It is shown by default, until the collapse plugin
-                                                    adds the appropriate classes that we use to style
-                                                    each element. These classes control the overall
-                                                    appearance, as well as the showing and hiding via
-                                                    CSS transitions. You can modify any of this with
-                                                    custom CSS or overriding our default variables. It's
-                                                    also worth noting that just about any HTML can go
-                                                    within the <code>.accordion-body</code>, though the
-                                                    transition does limit overflow.
-                                                </div>
-                                            </div>
-                                        </div>
-
+                    <div class="card">
+                        <div class="card-header"></div>
+                        <div class="card-body">
+                            <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                <form action="gradeSearch.jsp">
+                                <div class="dataTable-top">
+                                    <div class="dataTable-search">
+                                        <input class="dataTable-input" placeholder="输入考试编号" type="text">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">
+                                            查询
+                                        </button>
                                     </div>
+                                </div>
+                                </form>
+                                <div class="dataTable-container">
+                                    <table class="table table-striped dataTable-table" id="table1">
+                                        <thead>
+                                        <tr>
+                                            <th data-sortable="" style="width: 36.2451%;">
+                                                <a >课程名称</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 12.0623%;">
+                                                <a >课程类别</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 18.8716%;">
+                                                <a >考试日期</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 16.4397%;">
+                                                <a >成绩</a>
+                                            </th>
+                                            <th data-sortable="" style="width: 16.4397%;">
+                                                <a>是否通过</a>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>数据库设计</td>
+                                                <td>必修</td>
+                                                <td>2022-4-23</td>
+                                                <td>65</td>
+                                                <td>
+                                                <span class="badge bg-success">通过</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>计算机网络</td>
+                                                <td>选修</td>
+                                                <td>2022-4-13</td>
+                                                <td>55</td>
+                                                <td>
+                                                    <span class="badge bg-danger">未通过</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>软件开发</td>
+                                                <td>必修</td>
+                                                <td>2022-3-23</td>
+                                                <td>89</td>
+                                                <td>
+                                                    <span class="badge bg-success">通过</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="dataTable-bottom">
                                 </div>
                             </div>
                         </div>

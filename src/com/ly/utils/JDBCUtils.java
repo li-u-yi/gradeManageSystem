@@ -15,7 +15,7 @@ public class JDBCUtils {
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			url="jdbc:mysql://localhost:3306/workers?useUnicode=true&characterEncoding=UTF-8";
+			url="jdbc:mysql://localhost:3306/grade_manage?useUnicode=true&characterEncoding=UTF-8";
 			username="root";
 			password="123456";
 			

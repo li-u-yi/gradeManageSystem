@@ -37,19 +37,23 @@ public class LoginCheckServlet extends HttpServlet {
 
         UserService userService = new UserService();
         User res = userService.loginCheck(userid, password, role);
+        PrintWriter out = response.getWriter();
         if (res != null) {
             //登陆成功
-            if (role == "1") {//学生账号--跳转学生登陆界面
+            if (role.equals("1")) {//学生账号--跳转学生登陆界面
                 request.getSession().setAttribute("message", "登陆成功");
                 request.getRequestDispatcher("signUp.jsp").forward(request, response);
-            } else if (role == "2") {//管理员账号--跳转管理员登陆界面
+
+            } else if (role.equals("2")) {//管理员账号--跳转管理员登陆界面
                 request.getSession().setAttribute("message", "登陆成功");
-                request.getRequestDispatcher("gradeInsert.jsp").forward(request, response);
+                request.getRequestDispatcher("gradeSearch.jsp").forward(request, response);
+
             }
         } else {
             //登陆失败
             request.setAttribute("msg", "登陆失败，请检查用户名和密码是否正确");
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            out.print("<script language='JavaScript'>alert('登陆失败，请检查用户名和密码是否正确');location.href='login1.jsp';</script>");
+
         }
     }
 }
