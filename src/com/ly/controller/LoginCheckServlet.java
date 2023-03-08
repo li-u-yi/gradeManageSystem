@@ -46,7 +46,7 @@ public class LoginCheckServlet extends HttpServlet {
 
             } else if (role.equals("2")) {//管理员账号--跳转管理员登陆界面
                 request.getSession().setAttribute("loginUser", res);
-                request.getRequestDispatcher("gradeSearch.jsp").forward(request, response);
+                request.getRequestDispatcher("managerGradeSearch.jsp").forward(request, response);
 
             }
         } else {

@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExamDao {
-    //学生查成绩
-    public List<ScoreDto> getExamList(String examNum) {
+    //查成绩(查询字段，数值)
+    public List<ScoreDto> getExamList(String query,String param) {
         Connection con = null;
         PreparedStatement pre = null;
         ResultSet resultSet = null;
@@ -22,10 +22,11 @@ public class ExamDao {
 
         try {
             con = JDBCUtils.getConnection();
-            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id where exam_num = ? ";
+            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id where "+query +" = ? ";
             pre = con.prepareStatement(sql);
-            pre.setString(1, examNum);
+            pre.setString(1, param);
             resultSet = pre.executeQuery();
+            System.out.println(pre);
             while (resultSet.next()) {
                 ScoreDto scoreDto = new ScoreDto();
                 scoreDto.setScore(resultSet.getInt("score"));
@@ -37,10 +38,10 @@ public class ExamDao {
                 scoreDto.setStuClass(resultSet.getInt("stu_class"));
                 scoreDto.setMajor(resultSet.getString("major"));
                 scoreDto.setCourseType(resultSet.getString("course_type"));
-                if(resultSet.getInt("score")>60){
+                if (resultSet.getInt("score") > 60) {
                     scoreDto.setPassOrNot("通过");
                     scoreDto.setColor("success");
-                }else{
+                } else {
                     scoreDto.setColor("danger");
                     scoreDto.setPassOrNot("未通过");
                 }
