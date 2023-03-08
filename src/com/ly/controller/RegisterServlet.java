@@ -1,4 +1,6 @@
-package controller.servlet;
+
+
+package com.ly.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,39 +12,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.myjavabean.JDBCUtils;
+import com.ly.utils.JDBCUtils;
 
-@WebServlet({"/commentServlet"})
-public class commentServlet extends HttpServlet {
+@WebServlet({"/registerServlet"})
+public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public commentServlet() {
+    public RegisterServlet() {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         String uid = request.getParameter("id");
-        String manager_id = request.getParameter("manager_id");
-        String value = new String(request.getParameter("comments").getBytes("ISO-8859-1"), "utf-8");
-        PrintWriter out = response.getWriter();
+        String name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "utf-8");
+        String psw = request.getParameter("psw");
+        String role = request.getParameter("role");
 
         try {
             Connection conn = JDBCUtils.getConnection();
-            String str = "update workers.worker set comment = '" + value + "', manager_id = '" + manager_id + "'WHERE uid = '" + uid + "'";
+            String str = "insert into worker(uid,uname,psw,role) values(?,?,?,?)";
             PreparedStatement pst = conn.prepareStatement(str);
-            boolean rs = pst.execute(str);
+            pst.setObject(1, uid);
+            pst.setObject(2, name);
+            pst.setObject(3, psw);
+            pst.setObject(4, role);
+            int rs = pst.executeUpdate();
             response.setCharacterEncoding("UTF-8");
-            if (!rs) {
-                out.print("<script language='JavaScript'>alert('更新成功');location.href='manager.jsp';</script>");
+            PrintWriter out = response.getWriter();
+            if (rs > 0) {
+                out.print("<script language='JavaScript'>alert('注册成功');location.href='login.jsp';</script>");
             } else {
-                out.print("<script language='JavaScript'>alert('更新失败');location.href='manager.jsp';</script>");
+                out.print("<script language='JavaScript'>alert('注册失败');location.href='login.jsp';</script>");
             }
 
             pst.close();
             conn.close();
-        } catch (Exception var11) {
-            var11.printStackTrace();
+        } catch (Exception var12) {
+            var12.printStackTrace();
         }
 
     }

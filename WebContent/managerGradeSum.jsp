@@ -48,23 +48,23 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item">
-                            <a href="signUp.jsp" class="sidebar-link">
-                                <i class="bi bi-pen-fill"></i>
-                                <span>考试报名</span>
-
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a href="gradeSearch.jsp" class="sidebar-link">
+                        <li class="sidebar-item ">
+                            <a href="managerGradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
                             </a>
                         </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="managerGradeInsert.jsp" class="sidebar-link">
+                                <i class="bi bi-journal-check"></i>
+                                <span>成绩录入</span>
+                            </a>
+                        </li>
+
+
                         <li class="sidebar-item active">
-                            <a href="gradeSum.jsp" class="sidebar-link">
+                            <a href="managerGradeSum.jsp" class="sidebar-link">
                                 <i class="bi bi-bar-chart-fill"></i>
                                 <span>成绩统计</span>
                             </a>
@@ -81,7 +81,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         </li>
                     </ul>
                 </div>
-                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div></div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div>
+        </div>
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">

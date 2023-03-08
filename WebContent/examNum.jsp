@@ -48,7 +48,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item active">
                             <a href="signUp.jsp" class="sidebar-link">
                                 <i class="bi bi-pen-fill"></i>
                                 <span>考试报名</span>
@@ -60,13 +60,6 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                             <a href="gradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item active ">
-                            <a href="gradeInsert.jsp" class="sidebar-link">
-                                <i class="bi bi-journal-check"></i>
-                                <span>成绩录入</span>
                             </a>
                         </li>
 
@@ -96,62 +89,45 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>成绩录入</h3>
+                            <h3>考试报名</h3>
                             <p class="text-subtitle text-muted">
-                                请确认无误后录入
+                                恭喜你，报名成功！
                             </p>
                         </div>
 
                     </div>
                 </div>
-                <section id="basic-vertical-layouts">
-                    <div class="row match-height">
-                        <div class="col-md-6 col-12">
+                <section class="section">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
                             <div class="card">
-                                <div class="card-header">
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <form class="form form-vertical">
-                                            <div class="form-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="examId">学生考试编号</label>
-                                                            <input type="text" id="examId" class="form-control" name="fname" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="grade">成绩</label>
-                                                            <input type="text" id="grade" class="form-control" name="fname" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="email-id-vertical">管理员编号</label>
-                                                            <input type="email" id="email-id-vertical" class="form-control" name="email-id" placeholder="输入您的id">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-check">
-                                                            <div class="checkbox">
-                                                                <input type="checkbox" id="checkbox3" class="form-check-input" checked="">
-                                                                <label for="checkbox3">确认无误</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 d-flex justify-content-end">
-                                                        <button type="submit" class="btn btn-primary me-1 mb-1">
-                                                            提交
-                                                        </button>
-                                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">
-                                                            清除
-                                                        </button>
-                                                    </div>
+                                <div class="card-body">
+                                    <p>
+                                        请妥善保存考试编号，用于后续成绩查询
+                                    </p>
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    考试编号
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                                                <div class="accordion-body">
+                                                    <strong>This is the first item's accordion body.</strong>
+                                                    It is shown by default, until the collapse plugin
+                                                    adds the appropriate classes that we use to style
+                                                    each element. These classes control the overall
+                                                    appearance, as well as the showing and hiding via
+                                                    CSS transitions. You can modify any of this with
+                                                    custom CSS or overriding our default variables. It's
+                                                    also worth noting that just about any HTML can go
+                                                    within the <code>.accordion-body</code>, though the
+                                                    transition does limit overflow.
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

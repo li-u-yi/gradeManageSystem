@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -49,24 +48,23 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item">
-                            <a href="signUp.jsp" class="sidebar-link">
-                                <i class="bi bi-pen-fill"></i>
-                                <span>考试报名</span>
-
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item active ">
-                            <a href="gradeSearch.jsp" class="sidebar-link">
+                        <li class="sidebar-item active">
+                            <a href="managerGradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
                             </a>
                         </li>
 
+                        <li class="sidebar-item">
+                            <a href="managerGradeInsert.jsp" class="sidebar-link">
+                                <i class="bi bi-journal-check"></i>
+                                <span>成绩录入</span>
+                            </a>
+                        </li>
+
 
                         <li class="sidebar-item">
-                            <a href="gradeSum.jsp" class="sidebar-link">
+                            <a href="managerGradeSum.jsp" class="sidebar-link">
                                 <i class="bi bi-bar-chart-fill"></i>
                                 <span>成绩统计</span>
                             </a>
@@ -83,7 +81,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         </li>
                     </ul>
                 </div>
-                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div></div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div>
+        </div>
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -108,10 +107,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         <div class="card-header"></div>
                         <div class="card-body">
                             <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                <form action="StudentGradeSearchServlet">
+                                <form action="gradeSearch.jsp">
                                 <div class="dataTable-top">
                                     <div class="dataTable-search">
-                                        <input class="dataTable-input" placeholder="输入考试编号" type="text" name="exam_num">
+                                        <input class="dataTable-input" placeholder="输入考试编号" type="text">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
                                             查询
                                         </button>
@@ -140,19 +139,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${list}" var="clas">
                                             <tr>
-                                                <th scope="row"><%=++i %></th>
-                                                <td><a  href='classinforlet?hao=${clas.hao} ' >${clas.name}</a>
-                                                <td>${clas.hao}</td>
-                                                <td>${clas.tname}</td>
-                                                <td>${clas.person}</td>
-                                                <td>${clas.chose}</td>
-
-
-                                            </tr>
-                                        </c:forEach>
-                                        <tr>
                                                 <td>数据库设计</td>
                                                 <td>必修</td>
                                                 <td>2022-4-23</td>

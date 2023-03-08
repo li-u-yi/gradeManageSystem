@@ -59,14 +59,6 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="gradeInsert.jsp" class="sidebar-link">
-                                <i class="bi bi-journal-check"></i>
-                                <span>成绩录入</span>
-                            </a>
-                        </li>
-
-
                         <li class="sidebar-item">
                             <a href="gradeSum.jsp" class="sidebar-link">
                                 <i class="bi bi-bar-chart-fill"></i>
@@ -104,7 +96,7 @@
                     </div>
 
                 </div>
-                <form action="">
+                <form action="examNum.jsp">
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
@@ -185,7 +177,7 @@
                                                 </fieldset>
                                             </div>
                                             <div class="col-12 d-flex justify-content-end">
-                                                <button type="submit" class="btn btn-primary me-1 mb-1">
+                                                <button type="submit"  class="btn btn-primary me-1 mb-1">
                                                     提交
                                                 </button>
                                                 <button type="reset" class="btn btn-light-secondary me-1 mb-1">
