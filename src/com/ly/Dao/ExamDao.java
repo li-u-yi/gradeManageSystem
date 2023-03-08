@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ExamDao {
     //学生查成绩
-    public List<ScoreDto> getScoreList(String query) {
+    public List<ScoreDto> getExamList(String examNum) {
         Connection con = null;
         PreparedStatement pre = null;
         ResultSet resultSet = null;
@@ -22,8 +22,9 @@ public class ExamDao {
 
         try {
             con = JDBCUtils.getConnection();
-            String sql = "select * from (exam inner join student inner join course )where stu_id = ? ";
+            String sql = "select * from (exam inner join student inner join course )where exam_num = ? ";
             pre = con.prepareStatement(sql);
+            pre.setString(1, examNum);
             resultSet = pre.executeQuery();
             while (resultSet.next()) {
                 ScoreDto scoreDto = new ScoreDto();

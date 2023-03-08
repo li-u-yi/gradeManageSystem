@@ -41,11 +41,11 @@ public class LoginCheckServlet extends HttpServlet {
         if (res != null) {
             //登陆成功
             if (role.equals("1")) {//学生账号--跳转学生登陆界面
-                request.getSession().setAttribute("message", "登陆成功");
+                request.getSession().setAttribute("loginUser", res);
                 request.getRequestDispatcher("signUp.jsp").forward(request, response);
 
             } else if (role.equals("2")) {//管理员账号--跳转管理员登陆界面
-                request.getSession().setAttribute("message", "登陆成功");
+                request.getSession().setAttribute("loginUser", res);
                 request.getRequestDispatcher("gradeSearch.jsp").forward(request, response);
 
             }

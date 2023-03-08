@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -107,10 +108,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         <div class="card-header"></div>
                         <div class="card-body">
                             <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                <form action="gradeSearch.jsp">
+                                <form action="StudentGradeSearchServlet">
                                 <div class="dataTable-top">
                                     <div class="dataTable-search">
-                                        <input class="dataTable-input" placeholder="输入考试编号" type="text">
+                                        <input class="dataTable-input" placeholder="输入考试编号" type="text" name="exam_num">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
                                             查询
                                         </button>
@@ -139,7 +140,19 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${list}" var="clas">
                                             <tr>
+                                                <th scope="row"><%=++i %></th>
+                                                <td><a  href='classinforlet?hao=${clas.hao} ' >${clas.name}</a>
+                                                <td>${clas.hao}</td>
+                                                <td>${clas.tname}</td>
+                                                <td>${clas.person}</td>
+                                                <td>${clas.chose}</td>
+
+
+                                            </tr>
+                                        </c:forEach>
+                                        <tr>
                                                 <td>数据库设计</td>
                                                 <td>必修</td>
                                                 <td>2022-4-23</td>
