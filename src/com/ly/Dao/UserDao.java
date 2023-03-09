@@ -11,6 +11,13 @@ import java.util.Date;
 
 public class UserDao {
 
+    /**
+     * 返回对应员工
+     * @param userid
+     * @param password
+     * @param role
+     * @return
+     */
     public User getUserByUserIdAndPasswordAndRole(String  userid, String password, String role) {
         Connection con = null;
         PreparedStatement pre = null;

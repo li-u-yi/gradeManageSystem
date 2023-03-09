@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -119,6 +120,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             </select>
                                         </div>
                                     </div>
+                                    <form action="studentGradeSum">
                                     <div class="col-md-3 mb-4">
                                         <div class="input-group mb-3">
                                             <label class="input-group-text" for="inputGroupSelect01">排序方式</label>
@@ -126,7 +128,6 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                                 <option selected="">--</option>
                                                 <option value="1">升序</option>
                                                 <option value="2">降序</option>
-                                                <option value="3">Three</option>
                                             </select>
                                         </div>
 
@@ -137,106 +138,55 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                         </button>
                                     </div>
                                     <div class="col-md-1 mb-4"></div>
+
                                     <div class="col-md-4 mb-4">
-                                        <input class="dataTable-input " placeholder="输入查询字段" type="text">
+                                        <input class="dataTable-input " placeholder="输入查询字段" type="text" name="query">
                                         <button type="submit" class="btn btn-light-secondary me-1 mb-1">
                                             查询
                                         </button>
                                     </div>
+                                    </form>
 
                                 </div>
 
                                 <div class="dataTable-container">
-                                    <table class="table table-striped dataTable-table" id="table2">
+                                    <table class="table table-striped dataTable-table" id="table1">
                                         <thead>
                                         <tr>
-                                            <th data-sortable="" style="width: 15%;">
-                                                <a >考试编号</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10%;">
-                                                <a >姓名</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 15%;">
-                                                <a >专业</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 15%;">
+                                            <th data-sortable="" style="width: 10.2451%;">
                                                 <a >课程名称</a>
                                             </th>
-                                            <th data-sortable="" style="width: 12%;">
-                                                <a >课程类别</a>
+                                            <th data-sortable="" style="width: 6.0623%;">
+                                                <a >类别</a>
                                             </th>
-                                            <th data-sortable="" style="width: 15%;">
+                                            <th data-sortable="" style="width: 10.8716%;">
                                                 <a >考试日期</a>
                                             </th>
-                                            <th data-sortable="" style="width: 9%;">
-                                                <a>成绩</a>
+                                            <th data-sortable="" style="width: 10.8716%;">
+                                                <a >考试时间</a>
                                             </th>
-                                            <th data-sortable="" style="width: 13%;">
-                                                <a>录入状态</a>
+                                            <th data-sortable="" style="width: 6.4397%;">
+                                                <a >成绩</a>
                                             </th>
-                                            <th data-sortable="" style="width: 13%;">
-                                                <a>操作</a>
+                                            <th data-sortable="" style="width: 10.4397%;">
+                                                <a>是否通过</a>
                                             </th>
-                                            <th data-sortable="" style="width: 13%;">
-                                                <a>操作</a>
-                                            </th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>09190105</td>
-                                            <td>张余</td>
-                                            <td>信息管理</td>
-                                            <td>数据库设计</td>
-                                            <td>必修</td>
-                                            <td>2022-4-23</td>
-                                            <td>65</td>
-                                            <td>
-                                                <a href="#" class="badge bg-success">已录入</a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="badge bg-warning">修改</a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="badge bg-danger">删除</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>0918099</td>
-                                            <td>李雷雷</td>
-                                            <td>信息系统</td>
-                                            <td>计算机网络</td>
-                                            <td>选修</td>
-                                            <td>2022-4-13</td>
-                                            <td>55</td>
-                                            <td>
-                                                <a href="#" class="badge bg-secondary">未录入</a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="badge bg-warning">修改</a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="badge bg-danger">删除</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>0914099</td>
-                                            <td>王余</td>
-                                            <td>大数据管理</td>
-                                            <td>软件开发</td>
-                                            <td>必修</td>
-                                            <td>2022-3-23</td>
-                                            <td>89</td>
-                                            <td>
-                                                <a href="#" class="badge bg-success">已录入</a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="badge bg-warning">修改</a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="badge bg-danger">删除</a>
-                                            </td>
-                                        </tr>
+                                        <c:forEach var="score" items="${scores}" varStatus="status" >
+                                            <tr>
+                                                <td>${score.courseName}</td>
+                                                <td>${score.courseType}</td>
+                                                <td>${score.date}</td>
+                                                <td>${score.time}</td>
+                                                <td>${score.score}</td>
+                                                <td>
+                                                    <span class="badge bg-${score.color}">${score.passOrNot}</span>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

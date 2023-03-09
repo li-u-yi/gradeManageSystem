@@ -41,6 +41,9 @@ public class LoginCheckServlet extends HttpServlet {
         if (res != null) {
             //登陆成功
             if (role.equals("1")) {//学生账号--跳转学生登陆界面
+                Cookie cookie = new Cookie("userId",userid);
+                cookie.setMaxAge(200);
+                response.addCookie(cookie);
                 request.getSession().setAttribute("loginUser", res);
                 request.getRequestDispatcher("signUp.jsp").forward(request, response);
 

@@ -7,6 +7,7 @@ import com.ly.entity.Manager;
 import com.ly.entity.dto.ScoreDto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ManagerService {
     /**
@@ -70,6 +71,18 @@ public class ManagerService {
             return true;
 
         }
+    }
+
+    /**
+     * 返回管理员查询的所有成绩
+     * 模糊查询
+     * @param query
+     * @return
+     */
+    public List<ScoreDto> managerGetStudentAllScoreList(String query){
+        List<ScoreDto> list;
+        ExamDao examDao = new ExamDao();
+        return examDao.getScoreList(query,2);
     }
 
 

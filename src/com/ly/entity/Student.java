@@ -2,7 +2,7 @@ package com.ly.entity;
 
 public class Student {
     private int stuId;
-    private String uid;
+    private int uid;
     private String stuName;
     private int stuClass;
     private String major;
@@ -15,11 +15,11 @@ public class Student {
         this.stuId = stuId;
     }
 
-    public String getUid() {
+    public int getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 
