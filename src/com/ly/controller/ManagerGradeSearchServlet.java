@@ -1,8 +1,7 @@
 package com.ly.controller;
 
 import com.ly.entity.dto.ScoreDto;
-import com.ly.service.ManagerScoreService;
-import com.ly.service.StudentScoreService;
+import com.ly.service.ManagerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +29,8 @@ public class ManagerGradeSearchServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String manId = request.getParameter("man_id");
-        ManagerScoreService managerScoreService = new ManagerScoreService();
-        List<ScoreDto> scores = managerScoreService.getExamList(manId);
+        ManagerService managerService = new ManagerService();
+        List<ScoreDto> scores = managerService.getExamList(manId);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

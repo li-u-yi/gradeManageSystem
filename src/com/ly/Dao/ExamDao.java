@@ -13,7 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExamDao {
-    //查成绩(查询字段，数值)
+    /**
+     * 查询成绩
+     * @param query
+     * @param param
+     * @return
+     */
     public List<ScoreDto> getExamList(String query,String param) {
         Connection con = null;
         PreparedStatement pre = null;
@@ -26,10 +31,10 @@ public class ExamDao {
             pre = con.prepareStatement(sql);
             pre.setString(1, param);
             resultSet = pre.executeQuery();
-            System.out.println(pre);
             while (resultSet.next()) {
                 ScoreDto scoreDto = new ScoreDto();
                 scoreDto.setScore(resultSet.getInt("score"));
+                scoreDto.setExamNum(resultSet.getString("exam_num"));
                 scoreDto.setDate(resultSet.getDate("date"));
                 scoreDto.setCourseName(resultSet.getString("course_name"));
                 scoreDto.setStuId(resultSet.getInt("stu_id"));
@@ -55,4 +60,33 @@ public class ExamDao {
         }
         return res;
     }
+
+
+    /**
+     * 更新成绩
+     * @param score
+     */
+    public void updateScore(Exam score){
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "update exam set score = ? , man_id = ? where exam_num = ?";
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, score.getScore());
+            pre.setInt(2, score.getManId());
+            pre.setString(3, score.getExamNum());
+            pre.execute();
+            System.out.println(pre);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet,pre,con);
+        }
+    }
+
 }
+
+

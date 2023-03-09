@@ -122,7 +122,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="email-id-vertical">管理员编号</label>
-                                                            <input type="email" id="email-id-vertical" class="form-control" name="email-id" placeholder="输入您的id">
+                                                            <input type="email" id="email-id-vertical" class="form-control" name="email-id" placeholder="">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">

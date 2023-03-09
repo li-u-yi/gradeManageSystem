@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -49,14 +48,14 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item ">
                             <a href="managerGradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item active ">
                             <a href="managerGradeInsert.jsp" class="sidebar-link">
                                 <i class="bi bi-journal-check"></i>
                                 <span>成绩录入</span>
@@ -85,104 +84,68 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div>
         </div>
         <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-
             <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>我的录入</h3>
+                            <h3>成绩录入</h3>
                             <p class="text-subtitle text-muted">
-                                已录入成绩查询
+                                请确认无误后录入
                             </p>
                         </div>
 
                     </div>
                 </div>
-                <section class="section">
-                    <div class="card">
-                        <div class="card-header"></div>
-                        <div class="card-body">
-                            <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                <form action="ManagerGradeSearchServlet">
-                                    <div class="dataTable-top">
-                                        <div class="dataTable-search">
-                                            <input class="dataTable-input" placeholder="输入管理员编号" type="text" name="man_id">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">
-                                                查询
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="dataTable-container">
-                                    <table class="table table-striped dataTable-table" id="table1">
-                                        <thead>
-                                        <tr>
-                                            <th data-sortable="" style="width: 6.8716%;">
-                                                <a >姓名</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10.8716%;">
-                                                <a >专业</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10.8716%;">
-                                                <a >班级</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10.2451%;">
-                                                <a >课程名称</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 6.0623%;">
-                                                <a >类别</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10.8716%;">
-                                                <a >考试日期</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10.8716%;">
-                                                <a >考试时间</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 6.4397%;">
-                                                <a >成绩</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 10.4397%;">
-                                                <a>是否通过</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 6.4397%;">
-                                                <a>操作</a>
-                                            </th>
-                                            <th data-sortable="" style="width: 6.4397%;">
-                                                <a>操作</a>
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach var="score" items="${scores}" varStatus="status" >
-                                            <tr>
-                                                <td>${score.stuName}</td>
-                                                <td>${score.major}</td>
-                                                <td>${score.stuClass}</td>
-                                                <td>${score.courseName}</td>
-                                                <td>${score.courseType}</td>
-                                                <td>${score.date}</td>
-                                                <td>${score.time}</td>
-                                                <td>${score.score}</td>
-                                                <td>
-                                                    <span class="badge bg-${score.color}">${score.passOrNot}</span>
-                                                </td>
-                                                <td>
-                                                    <a class="badge bg-warning" href="managerGradeUpdate.jsp?examNum=${score.examNum}">修改</a>
-                                                </td>
-                                                <td>
-                                                    <a class="badge bg-danger" href="managerGradeSum.jsp">删除</a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
+                <section id="basic-vertical-layouts">
+                    <div class="row match-height">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
                                 </div>
-                                <div class="dataTable-bottom">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-vertical" action="updateGrade">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>考试编号: </label>
+                                                            <label><%=request.getParameter("examNum")%></label>
+                                                        </div>
+                                                        <input hidden="hidden" name="examNum" value="<%=request.getParameter("examNum")%>">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="grade">成绩</label>
+                                                            <input type="text" id="grade" class="form-control" name="score" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>管理员编号</label>
+                                                            <input type="text" class="form-control" name="manId" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-check">
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" id="checkbox3" class="form-check-input" checked="" name="check" value="1">
+                                                                <label for="checkbox3">确认无误</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-primary me-1 mb-1">
+                                                            提交
+                                                        </button>
+                                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                                                            清除
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

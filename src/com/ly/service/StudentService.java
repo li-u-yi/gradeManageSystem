@@ -5,9 +5,9 @@ import com.ly.entity.dto.ScoreDto;
 
 import java.util.List;
 
-public class ManagerScoreService {
-    public List<ScoreDto> getExamList(String manId) {
+public class StudentService {
+    public List<ScoreDto> getExamList(String examNum){
         ExamDao examDao = new ExamDao();
-        return examDao.getExamList("man_id", manId);
+        return examDao.getExamList("exam_num",examNum);
     }
 }
