@@ -107,6 +107,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         <div class="card-header"></div>
                         <div class="card-body">
                             <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                <form action="studentGradeSum">
                                 <div class="row">
                                     <div class="col-md-3 mb-4">
                                         <div class="input-group mb-3">
@@ -120,7 +121,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             </select>
                                         </div>
                                     </div>
-                                    <form action="studentGradeSum">
+
                                     <div class="col-md-3 mb-4">
                                         <div class="input-group mb-3">
                                             <label class="input-group-text" for="inputGroupSelect01">排序方式</label>
@@ -145,9 +146,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                             查询
                                         </button>
                                     </div>
-                                    </form>
+
 
                                 </div>
+                                </form>
 
                                 <div class="dataTable-container">
                                     <table class="table table-striped dataTable-table" id="table1">
