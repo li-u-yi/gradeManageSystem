@@ -104,31 +104,31 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-vertical">
+                                        <form class="form form-vertical" action="updateGrade">
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="examId">学生考试编号</label>
-                                                            <input type="text" id="examId" class="form-control" name="fname" placeholder="">
+                                                            <label>学生考试编号</label>
+                                                            <input type="text" class="form-control" name="examNum" placeholder="">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="grade">成绩</label>
-                                                            <input type="text" id="grade" class="form-control" name="fname" placeholder="">
+                                                            <label >成绩</label>
+                                                            <input type="text" class="form-control" name="score" placeholder="">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="email-id-vertical">管理员编号</label>
-                                                            <input type="email" id="email-id-vertical" class="form-control" name="email-id" placeholder="">
+                                                            <label>管理员编号</label>
+                                                            <input type="text" class="form-control" name="manId" placeholder="">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-check">
                                                             <div class="checkbox">
-                                                                <input type="checkbox" id="checkbox3" class="form-check-input" checked="">
+                                                                <input type="checkbox" id="checkbox3" class="form-check-input" name="check" value="1">
                                                                 <label for="checkbox3">确认无误</label>
                                                             </div>
                                                         </div>

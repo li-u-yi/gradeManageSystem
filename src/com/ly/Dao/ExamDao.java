@@ -5,21 +5,19 @@ import com.ly.entity.dto.ScoreDto;
 import com.ly.utils.JDBCUtils;
 import com.ly.utils.ParamsUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExamDao {
     /**
      * 查询成绩
+     *
      * @param query
      * @param param
      * @return
      */
-    public List<ScoreDto> getExamList(String query,String param) {
+    public List<ScoreDto> getExamList(String query, String param) {
         Connection con = null;
         PreparedStatement pre = null;
         ResultSet resultSet = null;
@@ -27,7 +25,7 @@ public class ExamDao {
 
         try {
             con = JDBCUtils.getConnection();
-            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id where "+query +" = ? ";
+            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id where " + query + " = ? ";
             pre = con.prepareStatement(sql);
             pre.setString(1, param);
             resultSet = pre.executeQuery();
@@ -64,9 +62,10 @@ public class ExamDao {
 
     /**
      * 更新成绩
+     *
      * @param score
      */
-    public void updateScore(Exam score){
+    public void updateScore(Exam score) {
         Connection con = null;
         PreparedStatement pre = null;
         ResultSet resultSet = null;
@@ -83,10 +82,97 @@ public class ExamDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
-            JDBCUtils.close(resultSet,pre,con);
+            JDBCUtils.close(resultSet, pre, con);
         }
     }
 
+    /**
+     * 删除成绩
+     * @param examNum
+     */
+    public void deleteScore(String examNum) {
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "update exam set score = null , man_id = null where exam_num = ?";
+            pre = con.prepareStatement(sql);
+
+            pre.setString(1, examNum);
+            pre.execute();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+    }
+
+    /**
+     * 查询考试编号是否存在
+     * @param query
+     * @return
+     */
+
+    public List<Exam> getAllExamByExamNum(String query) {
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+        List<Exam> res = new ArrayList<Exam>();
+
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "SELECT * FROM exam where exam_num = ? ";
+            pre = con.prepareStatement(sql);
+            pre.setString(1, query);
+            resultSet = pre.executeQuery();
+            while (resultSet.next()) {
+                Exam exam = new Exam();
+                res.add(exam);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+        return res;
+    }
+
+
+    /**
+     * 插入新一行
+     * @param exam
+     **/
+    public void InsertExamNum(Exam exam) {
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "insert into exam (`exam_num`,`stu_id`,`date`,`time`,`course_id`) values (?,?,?,?,?)";
+            pre = con.prepareStatement(sql);
+            pre.setString(1, exam.getExamNum());
+            pre.setInt(2, exam.getStuId());
+            pre.setDate(3, exam.getDate());
+            pre.setTime(4, exam.getTime());
+            pre.setInt(5, exam.getCourseId());
+            pre.execute();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+    }
+
+
 }
+
+
 
 

@@ -21,7 +21,6 @@ public class UpdateGradeServlet extends HttpServlet {
         String manId = request.getParameter("manId");
         String check = request.getParameter("check");
         String score = request.getParameter("score");
-        System.out.println(examNum);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         ManagerService managerService = new ManagerService();
@@ -31,14 +30,15 @@ public class UpdateGradeServlet extends HttpServlet {
             obj.setScore(Integer.valueOf(score));
             obj.setExamNum(String.valueOf(examNum));
             obj.setManId(Integer.valueOf(manId));
-            System.out.println(manId);
-            if (managerService.isManager(manId)) {
+            if (managerService.isManager(manId) && managerService.isExam(examNum)) {
                 managerService.updateScore(obj);
                 out.print("<script language='JavaScript'>alert('更新成功');location.href='managerGradeSearch.jsp';</script>");
 
 
-            } else {
+            } else if(managerService.isExam(examNum)){//考试编号正确
                 out.print("<script language='JavaScript'>alert('更新失败，请输入正确的管理员编号');location.href='managerGradeSearch.jsp';</script>");
+            } else if (managerService.isManager(manId)) {//管理员编号正确
+                out.print("<script language='JavaScript'>alert('更新失败，请输入正确的考试编号');location.href='managerGradeSearch.jsp';</script>");
             }
         } else {
             //更新失败，请确认后输入

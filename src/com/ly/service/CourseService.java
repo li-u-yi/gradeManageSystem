@@ -13,4 +13,11 @@ public class CourseService {
         List<Course> courses = courseDao.getCouseList();
         return courses;
     }
+
+    public Course getCourseIdByName(String courseName){
+        CourseDao courseDao = new CourseDao();
+        Course course = courseDao.getCourseId(courseName);
+        System.out.println(courseName);
+        return course;
+    }
 }

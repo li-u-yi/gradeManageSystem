@@ -13,7 +13,10 @@ import java.util.Date;
 import java.util.List;
 
 public class CourseDao {
-    //获取所有课程
+    /**
+     * 获取所有课程
+     * @return
+     */
     public List<Course> getCouseList(){
         Connection con = null;
         PreparedStatement pre = null;
@@ -42,5 +45,37 @@ public class CourseDao {
         }
         return res;
     }
+
+    /**
+     * 通过课程名返回课程id
+     * @param courseName
+     * @return
+     */
+    public Course getCourseId(String courseName) {
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "select * from course where course_name = ?";
+            pre = con.prepareStatement(sql);
+            pre.setString(1, courseName);
+            resultSet = pre.executeQuery();
+            while (resultSet.next()) {
+                Integer courseId = resultSet.getInt("course_id");
+                Course course = new Course();
+                course.setCourseId(courseId);
+                return course;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+        return null;
+    }
+
+
 }
 

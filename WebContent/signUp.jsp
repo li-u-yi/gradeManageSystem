@@ -96,7 +96,7 @@
                     </div>
 
                 </div>
-                <form action="examNum.jsp">
+                <form action="createExamNum">
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
@@ -107,23 +107,23 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">姓名</label>
-                                        <input type="text" class="form-control" id="name" placeholder="输入姓名">
+                                        <label >姓名</label>
+                                        <input type="text" class="form-control" name="stuName" placeholder="输入姓名">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="number">学号</label>
-                                        <input type="text" class="form-control" id="number" placeholder="输入学号">
+                                        <label >学号</label>
+                                        <input type="text" class="form-control" name="stuId" placeholder="输入学号">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="class">专业</label>
-                                        <input type="text" class="form-control" id="major" placeholder="输入专业">
+                                        <label >专业</label>
+                                        <input type="text" class="form-control" name="major" placeholder="输入专业">
                                     </div>
                                     <div class="form-group">
-                                        <label for="class">班级</label>
-                                        <input type="text" class="form-control" id="class" placeholder="输入班级">
+                                        <label>班级</label>
+                                        <input type="text" class="form-control" name="stuClass" placeholder="输入班级">
                                     </div>
                                 </div>
                             </div>
@@ -143,21 +143,21 @@
                                             <div class="col-md-6 mb-4">
                                                 <h6>课程名称</h6>
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="courseName">
+                                                    <select class="form-select" name="courseName">
                                                         <option>--</option>
-                                                        <option>计算机网络</option>
-                                                        <option>软件开发</option>
-                                                        <option>数据库设计</option>
+                                                        <option value="计算机网络">计算机网络</option>
+                                                        <option value="软件开发">软件开发</option>
+                                                        <option value="数据库设计">数据库设计</option>
                                                     </select>
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <h6>课程类别</h6>
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" id="courseType">
+                                                    <select class="form-select" name="courseType">
                                                         <option>--</option>
-                                                        <option>必修</option>
-                                                        <option>选修</option>
+                                                        <option value="必修">必修</option>
+                                                        <option value="选修">选修</option>
                                                     </select>
                                                 </fieldset>
                                             </div>
@@ -167,13 +167,13 @@
                                             <div class="col-md-6 mb-4">
                                                 <h6>考试日期</h6>
                                                 <fieldset class="form-group">
-                                                    <input type="date" class="form-control" id="date" placeholder="">
+                                                    <input type="date" class="form-control" name="date" placeholder="">
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <h6>考试时间</h6>
                                                 <fieldset class="form-group">
-                                                    <input type="time" class="form-control" id="time" placeholder="">
+                                                    <input type="text" class="form-control" name="time" placeholder="--:--:--">
                                                 </fieldset>
                                             </div>
                                             <div class="col-12 d-flex justify-content-end">

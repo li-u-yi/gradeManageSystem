@@ -175,7 +175,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                                     <a class="badge bg-warning" href="managerGradeUpdate.jsp?examNum=${score.examNum}">修改</a>
                                                 </td>
                                                 <td>
-                                                    <a class="badge bg-danger" href="managerGradeSum.jsp">删除</a>
+                                                    <a class="badge bg-danger" href="delGrade?examNum=${score.examNum}">删除</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

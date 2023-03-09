@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ManagerService {
     /**
-     * 获取成绩列表
+     * 查询成绩
      * @return
      */
     public List<ScoreDto> getExamList(String manId) {
@@ -28,6 +28,11 @@ public class ManagerService {
 
     }
 
+    /**
+     * 判断是否是管理员
+     * @param manId
+     * @return
+     */
     public boolean isManager(String manId){
         ManagerDao managerDao = new ManagerDao();
         List<Manager> managers = managerDao.getManagerByManID(manId);
@@ -39,4 +44,33 @@ public class ManagerService {
 
         }
     }
+
+    /**
+     * 删除成绩
+     * @param examNum
+     */
+    public void deleteScore(String examNum){
+        ExamDao examDao = new ExamDao();
+        examDao.deleteScore(examNum);
+    }
+
+
+    /**
+     * 判断考试编号是否存在
+     * @param examNum
+     * @return
+     */
+    public boolean isExam(String examNum){
+        ExamDao examDao = new ExamDao();
+        List<Exam> exams= examDao.getAllExamByExamNum(examNum);
+        if (exams.isEmpty()){
+            return false;
+
+        }else{
+            return true;
+
+        }
+    }
+
+
 }
