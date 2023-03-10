@@ -24,7 +24,8 @@ public class ExamDao {
 
         try {
             con = JDBCUtils.getConnection();
-            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id ";
+            String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id " +
+                    "inner join student on student.stu_id = exam.stu_id ";
             if (query != null && !"".equals(query.trim())) {//如果查询条件不空，则加上模糊查询，如果查询条件为空，则直接返回所有值
                 query = ParamsUtils.wrapper(query);
                 sql += " where stu_name like " + query + " or course_name like " + query + " or major like " + query + " or course_type like " + query +" or stu_class like " + query + " or score like " + query;
@@ -75,10 +76,6 @@ public class ExamDao {
             }
             return res;
         }
-
-
-
-
 
     /**
      * 查询成绩

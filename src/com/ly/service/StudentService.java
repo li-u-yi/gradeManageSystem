@@ -46,7 +46,8 @@ public class StudentService {
         ExamDao examDao = new ExamDao();
         list = examDao.getScoreList(query,1);
         //过滤器，留下本学生用户以及大于0的成绩
-        list = list.stream().filter(exam -> exam.getStuId()==Integer.valueOf(stuId)).filter(exam->exam.getScore()>0).collect(Collectors.toList());
+        list = list.stream().filter(exam -> exam.getStuId()==Integer.valueOf(stuId))
+                .filter(exam->exam.getScore()>0).collect(Collectors.toList());
         if(!sortKey.equals("--")||sortMethod.equals("--")) {
             if(sortMethod.equals("1"))
                 list = SortUtils.SortScore(list,sortKey);
