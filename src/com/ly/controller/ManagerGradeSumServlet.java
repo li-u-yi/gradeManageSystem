@@ -2,9 +2,11 @@ package com.ly.controller;
 
 import com.ly.entity.dto.ScoreDto;
 import com.ly.service.ManagerService;
+import com.ly.service.StudentService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,14 +14,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/ManagerGradeSearchServlet")
-public class ManagerGradeSearchServlet extends HttpServlet {
+@WebServlet("/managerGradeSum")
+public class ManagerGradeSumServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManagerGradeSearchServlet() {
+    public ManagerGradeSumServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +30,21 @@ public class ManagerGradeSearchServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String manId = request.getParameter("man_id");
+        String query = request.getParameter("query");
+        String sortKey = request.getParameter("sortKey");
+        String sortWay = request.getParameter("sortWay");
         ManagerService managerService = new ManagerService();
-        List<ScoreDto> scores = managerService.getExamList(manId);
+        List<ScoreDto> scores = managerService.getAllScoreList(query,sortKey,sortWay);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         if (!scores.isEmpty()) {
             // 查询成功,传回scores对象列表
             request.setAttribute("scores", scores);
-            request.getRequestDispatcher("managerGradeSearch.jsp").forward(request, response);
+            request.getRequestDispatcher("managerGradeSum.jsp").forward(request, response);
         }else {
             //查询失败
-            out.print("<script language='JavaScript'>alert('查询失败，请检查管理员编号是否正确');location.href='managerGradeSearch.jsp';</script>");
+            out.print("<script language='JavaScript'>alert('查询失败');location.href='managerGradeSum.jsp';</script>");
 
         }
 
@@ -55,4 +59,3 @@ public class ManagerGradeSearchServlet extends HttpServlet {
     }
 
 }
-

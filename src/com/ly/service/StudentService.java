@@ -42,10 +42,15 @@ public class StudentService {
         List<ScoreDto> list;
         ExamDao examDao = new ExamDao();
         list = examDao.getScoreList(query,1);
-        System.out.println(list);
         //过滤器，留下本学生用户以及大于0的成绩
         return list.stream().filter(exam -> exam.getStuId()==Integer.valueOf(stuId)).filter(exam->exam.getScore()>0).collect(Collectors.toList());
     }
+
+    /**
+     * 根据用户id（在cookie里） 返回学生id（用于查询成绩表）
+     * @param uid
+     * @return
+     */
 
     public String getStudentIdByUid(String uid){
         StudentDao studentDao = new StudentDao();

@@ -45,8 +45,6 @@ public class StudentGradeSumServlet extends HttpServlet {
         String query = request.getParameter("query");
         StudentService studentService = new StudentService();
         String stuId = studentService.getStudentIdByUid(userId);
-        System.out.println(query);
-        System.out.println(stuId);
         List<ScoreDto> scores = studentService.getStudentAllScoreList(stuId,query);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");

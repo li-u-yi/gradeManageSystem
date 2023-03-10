@@ -6,6 +6,7 @@ import com.ly.entity.Exam;
 import com.ly.entity.Manager;
 import com.ly.entity.dto.ScoreDto;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,5 +86,93 @@ public class ManagerService {
         return examDao.getScoreList(query,2);
     }
 
+    public List<ScoreDto> getAllScoreList(String query,String sortKey,String sortMethod){
+        ExamDao examDao = new ExamDao();
+        List<ScoreDto> scores = null;
+        ScoreDto scoreDto = new ScoreDto();
+        if(sortKey.equals("--")&&sortMethod.equals("--")) {
+            scores = examDao.getScoreList(query,2);
+        }else {
+            List<ScoreDto> list = examDao.getScoreList(query,2);
+            if(sortMethod.equals("1"))
+            switch (sortKey) {
+                case "score":
+                     scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getScore))
+                            .collect(Collectors.toList());
+                    break;
+                case "stuClass":
+                    scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getStuClass))
+                            .collect(Collectors.toList());
+                    break;
+                case "stuName":
+                    scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getStuName))
+                            .collect(Collectors.toList());
+                    break;
+                case "major":
+                    scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getMajor))
+                            .collect(Collectors.toList());
+                    break;
+                case "courseName":
+                    scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getCourseName))
+                            .collect(Collectors.toList());
+                    break;
+                case "courseType":
+                    scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getCourseType))
+                            .collect(Collectors.toList());
+                    break;
+                case "date":
+                    scores = list.stream()
+                            .sorted(Comparator.comparing(ScoreDto::getDate))
+                            .collect(Collectors.toList());
+                    break;
+            }
+            if (sortMethod.equals("2")){
+                switch (sortKey) {
+                    case "score":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getScore).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                    case "stuClass":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getStuClass).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                    case "stuName":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getStuName).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                    case "major":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getMajor).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                    case "courseMame":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getCourseName).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                    case "courseType":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getCourseType).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                    case "date":
+                        scores = list.stream()
+                                .sorted(Comparator.comparing(ScoreDto::getDate).reversed())
+                                .collect(Collectors.toList());
+                        break;
+                }
+            }
+        }
+        return scores;
+    }
 
 }

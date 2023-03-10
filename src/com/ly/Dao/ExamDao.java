@@ -27,12 +27,13 @@ public class ExamDao {
             String sql = "SELECT * FROM exam inner join course on exam.course_id = course.course_id inner join student on student.stu_id = exam.stu_id ";
             if (query != null && !"".equals(query.trim())) {//如果查询条件不空，则加上模糊查询，如果查询条件为空，则直接返回所有值
                 query = ParamsUtils.wrapper(query);
-                sql += " where stu_name like " + query + " or course_name like " + query + " or major like " + query + " or stu_type like " + query +" or stu_class like " + query + " or score like " + query;
+                sql += " where stu_name like " + query + " or course_name like " + query + " or major like " + query + " or course_type like " + query +" or stu_class like " + query + " or score like " + query;
             }
             System.out.println(sql);
 //        排序    sql += " order by stu_id desc";
             pre = con.prepareStatement(sql);
             resultSet = pre.executeQuery();
+            System.out.println(pre);
             while (resultSet.next()) {
                 ScoreDto scoreDto = new ScoreDto();
                 scoreDto.setScore(resultSet.getInt("score"));
@@ -50,7 +51,7 @@ public class ExamDao {
                         scoreDto.setPassOrNot("已录入");
                         scoreDto.setColor("success");
                     } else {
-                        scoreDto.setColor("danger");
+                        scoreDto.setColor("secondary");
                         scoreDto.setPassOrNot("未录入");
                     }
                 }else {
