@@ -17,4 +17,9 @@ public class UserService {
 
         return userRes;
     }
+
+    public void insertUser(User user){
+        UserDao userDao = new UserDao();
+        userDao.insertUser(user);
+    }
 }

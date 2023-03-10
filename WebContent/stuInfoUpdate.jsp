@@ -5,22 +5,18 @@
 
 
     <head>
-<style>body {transition: opacity ease-in 0.2s; }
-body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; }
-</style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gradeManageSystem</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>gradeManageSystem</title>
 
-    <link rel="stylesheet" href="assets/css/main/app.css">
-    <link rel="stylesheet" href="assets/css/main/app-dark.css">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+        <link rel="stylesheet" href="assets/css/main/app.css">
+        <link rel="stylesheet" href="assets/css/main/app-dark.css">
+        <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+        <link rel="stylesheet" href="assets/extensions/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
-    <link rel="stylesheet" href="assets/css/pages/simple-datatables.css">
-
-</head>
+        <style type="text/css">/* Chart.js */
+        @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
 
     <body class="theme-light">
     <div id="app">
@@ -47,14 +43,14 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
+
                         <li class="sidebar-item ">
-                            <a href="stuInfo" class="sidebar-link">
+                            <a href="stuInfo" class="sidebar-link active">
                                 <i class="bi bi-file-earmark-medical-fill"></i>
                                 <span>个人信息</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item ">
                             <a href="signUp.jsp" class="sidebar-link">
                                 <i class="bi bi-pen-fill"></i>
                                 <span>考试报名</span>
@@ -62,13 +58,12 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                             </a>
                         </li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item  ">
                             <a href="gradeSearch.jsp" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>成绩查询</span>
                             </a>
                         </li>
-
 
                         <li class="sidebar-item">
                             <a href="gradeSum.jsp" class="sidebar-link">
@@ -91,56 +86,75 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div>
         </div>
         <div id="main">
-            <div class="page-heading">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+            <div class ="page-heading">
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>考试报名</h3>
-                            <p class="text-subtitle text-muted">
-                                恭喜你，报名成功！
-                            </p>
+                            <h3>个人信息修改</h3>
+                            <p class="text-subtitle text-muted">请确认信息无误后输入</p>
                         </div>
 
                     </div>
+
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">考试编号:  <%=request.getAttribute("examNum")%></h4>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    请妥善保存考试编号，用于后续成绩查询
-                                </p>
-                                <!-- Button trigger for basic modal -->
-                                <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#default" onclick="window.location.href='signUp.jsp'">
-                                    已保存
-                                </button>
+                <form action="updateStudent">
+                <section class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">个人信息</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label >姓名</label>
+                                        <input type="text" class="form-control" name="stuName" placeholder="输入姓名">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label >学号</label>
+                                        <input type="text" class="form-control" name="stuId" placeholder="输入学号">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label >专业</label>
+                                        <input type="text" class="form-control" name="major" placeholder="输入专业">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>班级</label>
+                                        <input type="text" class="form-control" name="stuClass" placeholder="输入班级">
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit"  class="btn btn-primary me-1 mb-1">
+                                        提交
+                                    </button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                                        清除
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                </form>
             </div>
-
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-end">
-                        <p>
-                            <span class="text-danger"><i class="bi bi-heart"></i></span> by ly
-                        </p>
-                    </div>
-                </div>
-            </footer>
         </div>
 
     </div>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/app.js"></script>
-    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+
     <script src="assets/extensions/chart.js/Chart.min.js"></script>
     <script src="assets/js/pages/ui-chartjs.js"></script>
-    <script src="assets/js/pages/simple-datatables.js"></script>
+
 
 
 

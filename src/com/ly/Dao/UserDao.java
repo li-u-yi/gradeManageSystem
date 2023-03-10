@@ -11,6 +11,13 @@ import java.util.Date;
 
 public class UserDao {
 
+    /**
+     * 返回对应员工
+     * @param userid
+     * @param password
+     * @param role
+     * @return
+     */
     public User getUserByUserIdAndPasswordAndRole(String  userid, String password, String role) {
         Connection con = null;
         PreparedStatement pre = null;
@@ -21,7 +28,7 @@ public class UserDao {
             pre = con.prepareStatement(sql);
             pre.setString(1, userid);
             pre.setString(2, password);
-            pre.setString(3,role);
+            pre.setString(3, role);
             resultSet = pre.executeQuery();
             while (resultSet.next()) {
                 Integer uid = resultSet.getInt("uid");
@@ -42,4 +49,31 @@ public class UserDao {
         }
         return null;
     }
+
+    /**
+     * 插入用户,同时插入stu和manager表
+     * @param user
+     */
+    public void insertUser(User user){
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "insert into user (`uid`,`psw`,`role`) values (?,?,?)";
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, user.getUid());
+            pre.setString(2, user.getPsw());
+            pre.setInt(3, user.getRole());
+            pre.execute();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+    }
+
+
 }

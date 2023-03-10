@@ -13,6 +13,35 @@ public class ScoreDto {
     private int score;
     private int stuClass;
     private String major;
+    private String courseType;
+
+    //用来显示及格或者不及格
+    private String passOrNot;
+    private String color;
+
+    public String getPassOrNot() {
+        return passOrNot;
+    }
+
+    public void setPassOrNot(String passOrNot) {
+        this.passOrNot = passOrNot;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(String courseType) {
+        this.courseType = courseType;
+    }
 
     public int getStuClass() {
         return stuClass;

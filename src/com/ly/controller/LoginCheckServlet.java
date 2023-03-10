@@ -34,19 +34,23 @@ public class LoginCheckServlet extends HttpServlet {
         String role = request.getParameter("role");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
-
+        //checkbox没选中传回空值
+        if (role==null) role="1";
         UserService userService = new UserService();
         User res = userService.loginCheck(userid, password, role);
         PrintWriter out = response.getWriter();
         if (res != null) {
             //登陆成功
+            Cookie cookie = new Cookie("userId",userid);
+            cookie.setMaxAge(6000);
+            response.addCookie(cookie);
             if (role.equals("1")) {//学生账号--跳转学生登陆界面
                 request.getSession().setAttribute("loginUser", res);
-                request.getRequestDispatcher("signUp.jsp").forward(request, response);
+                request.getRequestDispatcher("stuInfo").forward(request, response);
 
             } else if (role.equals("2")) {//管理员账号--跳转管理员登陆界面
                 request.getSession().setAttribute("loginUser", res);
-                request.getRequestDispatcher("gradeSearch.jsp").forward(request, response);
+                request.getRequestDispatcher("managerGradeSearch.jsp").forward(request, response);
 
             }
         } else {
