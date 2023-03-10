@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -43,14 +44,14 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
+
                         <li class="sidebar-item ">
-                            <a href="stuInfo" class="sidebar-link">
+                            <a href="stuInfo " class="sidebar-link active">
                                 <i class="bi bi-file-earmark-medical-fill"></i>
                                 <span>个人信息</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item ">
                             <a href="signUp.jsp" class="sidebar-link">
                                 <i class="bi bi-pen-fill"></i>
                                 <span>考试报名</span>
@@ -86,80 +87,105 @@
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 789px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 347px;"></div></div></div>
         </div>
         <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-            <div class ="page-heading">
+            <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>考试报名信息</h3>
-                            <p class="text-subtitle text-muted">请确认信息无误后输入</p>
-                        </div>
+                            <div class="card">
+                                <div class="card-body py-4 px-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar avatar-xl">
+                                            <img src="assets/images/faces/1.jpg" alt="Face 1">
+                                        </div>
+                                        <div class="ms-3 name">
+                                            <h5 class="font-bold">${student.uid} 你好</h5>
+                                            <button type="button" class="btn btn-outline-primary btn-sm"  onclick="window.location.href='stuInfoUpdate.jsp'">
+                                                修改信息
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
 
                     </div>
-
                 </div>
-                <form action="createExamNum">
-                <section id="courseInfo">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">考试信息</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4">
-                                                <h6>课程名称</h6>
-                                                <fieldset class="form-group">
-                                                    <select class="form-select" name="courseName">
-                                                        <option>--</option>
-                                                        <option value="计算机网络">计算机网络</option>
-                                                        <option value="软件开发">软件开发</option>
-                                                        <option value="数据库设计">数据库设计</option>
-                                                        <option value="系统工程分析">系统工程分析</option>
-                                                        <option value="管理学">管理学</option>
-                                                        <option value="数据结构">数据结构</option>
-                                                    </select>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <h6>考试日期</h6>
-                                                <fieldset class="form-group">
-                                                    <input type="date" class="form-control" name="date" placeholder="">
-                                                </fieldset>
-                                            </div>
 
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon purple mb-2">
+                                            <i class="icons-boldShow"></i>
                                         </div>
-                                        <div class="row">
-
-                                            <div class="col-md-6 mb-4">
-                                                <h6>考试时间</h6>
-                                                <fieldset class="form-group">
-                                                    <input type="text" class="form-control" name="time" placeholder="--:--:--">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-12 d-flex justify-content-end">
-                                                <button type="submit"  class="btn btn-primary me-1 mb-1">
-                                                    提交
-                                                </button>
-                                                <button type="reset" class="btn btn-light-secondary me-1 mb-1">
-                                                    清除
-                                                </button>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semi-bold">
+                                            姓名
+                                        </h6>
+                                        <h6 class="font-extra bold mb-0">${student.stuName}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                </form>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon blue mb-2">
+                                            <i class="iconly-boldProfile"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">专业</h6>
+                                        <h6 class="font-extrabold mb-0">${student.major}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon green mb-2">
+                                            <i class="iconly-boldAdd-User"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">班级</h6>
+                                        <h6 class="font-extrabold mb-0">${student.stuClass}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon red mb-2">
+                                            <i class="iconly-boldBookmark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">学号</h6>
+                                        <h6 class="font-extrabold mb-0">${student.stuId}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+
             </div>
+
         </div>
 
     </div>

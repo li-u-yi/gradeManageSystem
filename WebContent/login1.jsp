@@ -36,11 +36,11 @@
             <div id="auth-left">
                 <div class="auth-logo">
                 </div>
-                <h1 class="auth-title">Grade</h1>
+                <h4 class="auth-title">Grade</h4>
                 <p class="auth-subtitle mb-5">
-                    management system
+                    manage system
                 </p>
-                <form action="loginCheckServlet">
+                <form action="loginCheckServlet" name="loginform">
                     <div class="form-group position-relative has-icon-left mb-4">
                         <input type="text" class="form-control form-control-xl" name="userid"placeholder="输入账号">
                         <div class="form-control-icon">
@@ -53,32 +53,32 @@
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                学生
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="2">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                管理员
-                            </label>
-                        </div>
+                    <div class="form-check form-check-lg d-flex align-items-end">
+                        <input class="form-check-input me-2" type="checkbox" value="2" name="role">
+                        <label class="form-check-label text-gray-600">
+                            我是管理员
+                        </label>
                     </div>
-                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" >
+                    <button class="btn btn-primary btn-block btn-lg shadow-md mt-5 " >
                         登陆
+                    </button>
+                    <button class="btn btn-light btn-block btn-lg shadow-md mt-5 " onclick="register()">
+                        注册
                     </button>
                 </form>
 
-            </div>
         </div>
 
     </div>
 </div>
-
-
+</div>
+    <script>function register(){
+        document.loginform.method="post";
+        document.loginform.target="rightframe";
+        document.loginform.action="register.jsp";
+        document.loginform.submit();
+    }
+    </script>
 </body>
 
 </html>

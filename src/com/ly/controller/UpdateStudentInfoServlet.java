@@ -1,6 +1,8 @@
 package com.ly.controller;
 
-import com.ly.entity.dto.ScoreDto;
+import com.ly.entity.Exam;
+import com.ly.entity.Student;
+import com.ly.service.ManagerService;
 import com.ly.service.StudentService;
 
 import javax.servlet.ServletException;
@@ -11,23 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
-@WebServlet("/studentGradeSum")
-public class StudentGradeSumServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public StudentGradeSumServlet() {
+@WebServlet("/updateStudent")
+public class UpdateStudentInfoServlet extends HttpServlet {
+    public UpdateStudentInfoServlet(){
         super();
-        // TODO Auto-generated constructor stub
     }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userId="";
         Cookie[] cookies=request.getCookies();
@@ -42,24 +33,25 @@ public class StudentGradeSumServlet extends HttpServlet {
 
             }
         }
-        String query = request.getParameter("query");
-        String sortKey = request.getParameter("sortKey");
-        String sortWay = request.getParameter("sortWay");
-        StudentService studentService = new StudentService();
-        String stuId = studentService.getStudentIdByUid(userId);
-        List<ScoreDto> scores = studentService.getStudentAllScoreList(stuId,query,sortKey,sortWay);
+        String stuName = request.getParameter("stuName");
+        String stuId = request.getParameter("stuId");
+        String major = request.getParameter("major");
+        String stuClass = request.getParameter("stuClass");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
+        StudentService studentService = new StudentService();
+        Student student = new Student();
         PrintWriter out = response.getWriter();
-        if (!scores.isEmpty()) {
-            // 查询成功,传回scores对象列表
-            request.setAttribute("scores", scores);
-            request.getRequestDispatcher("gradeSum.jsp").forward(request, response);
-        }else {
-            //查询失败
-            out.print("<script language='JavaScript'>alert('查询失败');location.href='gradeSearch.jsp';</script>");
-
-        }
+        student.setStuName(String.valueOf(stuName));
+        student.setMajor(String.valueOf(major));
+        student.setStuClass(Integer.valueOf(stuClass));
+        student.setStuId(Integer.valueOf(stuId));
+        student.setUid(Integer.valueOf(userId));
+        if (studentService.getStudentIdByUid(userId)=="0")
+            studentService.insertStu(student);
+        else
+            studentService.updateStu(student);
+        out.print("<script language='JavaScript'>alert('更新成功');location.href='stuInfo';</script>");
 
     }
 
@@ -68,7 +60,6 @@ public class StudentGradeSumServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        doPost(request,response);
+        doGet(request, response);
     }
-
 }

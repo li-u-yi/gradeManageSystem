@@ -112,7 +112,7 @@ public class ExamDao {
                 scoreDto.setStuClass(resultSet.getInt("stu_class"));
                 scoreDto.setMajor(resultSet.getString("major"));
                 scoreDto.setCourseType(resultSet.getString("course_type"));
-                if (resultSet.getInt("score") > 60) {
+                if (resultSet.getInt("score") >= 60) {
                     scoreDto.setPassOrNot("通过");
                     scoreDto.setColor("success");
                 } else {

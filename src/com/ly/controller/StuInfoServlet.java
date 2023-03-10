@@ -1,5 +1,6 @@
 package com.ly.controller;
 
+import com.ly.entity.Student;
 import com.ly.entity.dto.ScoreDto;
 import com.ly.service.StudentService;
 
@@ -13,14 +14,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/studentGradeSum")
-public class StudentGradeSumServlet extends HttpServlet {
+@WebServlet("/stuInfo")
+public class StuInfoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentGradeSumServlet() {
+    public StuInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,26 +43,16 @@ public class StudentGradeSumServlet extends HttpServlet {
 
             }
         }
-        String query = request.getParameter("query");
-        String sortKey = request.getParameter("sortKey");
-        String sortWay = request.getParameter("sortWay");
         StudentService studentService = new StudentService();
-        String stuId = studentService.getStudentIdByUid(userId);
-        List<ScoreDto> scores = studentService.getStudentAllScoreList(stuId,query,sortKey,sortWay);
+        Student student = studentService.getStudentByUid(userId);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        if (!scores.isEmpty()) {
-            // 查询成功,传回scores对象列表
-            request.setAttribute("scores", scores);
-            request.getRequestDispatcher("gradeSum.jsp").forward(request, response);
-        }else {
-            //查询失败
-            out.print("<script language='JavaScript'>alert('查询失败');location.href='gradeSearch.jsp';</script>");
-
+        request.setAttribute("student",student);
+        request.getRequestDispatcher("stuInfo.jsp").forward(request, response);
         }
 
-    }
+
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

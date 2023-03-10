@@ -49,6 +49,12 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
+                        <li class="sidebar-item ">
+                            <a href="stuInfo" class="sidebar-link">
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>个人信息</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-item">
                             <a href="signUp.jsp" class="sidebar-link">

@@ -1,6 +1,7 @@
 package com.ly.Dao;
 
 import com.ly.entity.Manager;
+import com.ly.entity.Student;
 import com.ly.entity.dto.ScoreDto;
 import com.ly.utils.JDBCUtils;
 
@@ -15,9 +16,10 @@ import java.util.List;
 public class ManagerDao {
     /**
      * 获取所有管理员
+     *
      * @param manID
      */
-    public List<Manager> getManagerByManID(String manID){
+    public List<Manager> getManagerByManID(String manID) {
         Connection con = null;
         PreparedStatement pre = null;
         ResultSet resultSet = null;
@@ -33,11 +35,11 @@ public class ManagerDao {
                 manager.setManId(resultSet.getInt("man_id"));
                 res.add(manager);
             }
-    }catch (SQLException e) {
+        } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
-            JDBCUtils.close(resultSet,pre,con);
+            JDBCUtils.close(resultSet, pre, con);
         }
         System.out.println(res);
         return res;

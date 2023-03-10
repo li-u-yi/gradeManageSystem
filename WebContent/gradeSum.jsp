@@ -48,6 +48,12 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
+                        <li class="sidebar-item ">
+                            <a href="stuInfo" class="sidebar-link">
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>个人信息</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-item">
                             <a href="signUp.jsp" class="sidebar-link">
@@ -111,22 +117,23 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                                 <div class="row">
                                     <div class="col-md-3 mb-4">
                                         <div class="input-group mb-3">
-                                            <label class="input-group-text" for="inputGroupSelect01">排序字段</label>
-                                            <select class="form-select" id="inputGroupSelect">
-                                                <option selected="">--</option>
-                                                <option value="1">成绩</option>
-                                                <option value="2">班级</option>
-                                                <option value="3">姓名</option>
-                                                <option value="4">专业</option>
+                                            <label class="input-group-text" >排序字段</label>
+                                            <select class="form-select" id="inputGroupSelect" name="sortKey">
+                                                <option selected="" value="--">--</option>
+                                                <option value="score">成绩</option>
+                                                <option value="courseName">课程名称</option>
+                                                <option value="courseType">课程类别</option>
+                                                <option value="date">考试日期</option>
+                                                <option value="time">考试时间</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-4">
                                         <div class="input-group mb-3">
-                                            <label class="input-group-text" for="inputGroupSelect01">排序方式</label>
-                                            <select class="form-select" id="inputGroupSelect01">
-                                                <option selected="">--</option>
+                                            <label class="input-group-text" >排序方式</label>
+                                            <select class="form-select" name="sortWay">
+                                                <option selected="" value="--">--</option>
                                                 <option value="1">升序</option>
                                                 <option value="2">降序</option>
                                             </select>
@@ -134,15 +141,12 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
                                     </div>
                                     <div class="col-md-1 mb-1">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            排序
-                                        </button>
                                     </div>
                                     <div class="col-md-1 mb-4"></div>
 
                                     <div class="col-md-4 mb-4">
                                         <input class="dataTable-input " placeholder="输入查询字段" type="text" name="query">
-                                        <button type="submit" class="btn btn-light-secondary me-1 mb-1">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">
                                             查询
                                         </button>
                                     </div>

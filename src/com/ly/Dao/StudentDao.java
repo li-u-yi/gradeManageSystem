@@ -48,4 +48,49 @@ public class StudentDao {
         }
         return null;
     }
+
+    public void InsertStudent(Student student){
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "insert into student (`uid`,`stu_id`,`stu_name`,`stu_class`,`major`) values (?,?,?,?,?)";
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, student.getUid());
+            pre.setInt(2, student.getStuId());
+            pre.setString(3, student.getStuName());
+            pre.setInt(4,student.getStuClass());
+            pre.setString(5,student.getMajor());
+            pre.execute();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+    }
+
+    public void UpdateStudent(Student student){
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet resultSet = null;
+        try {
+            con = JDBCUtils.getConnection();
+            String sql = "update student set stu_id = ?,stu_name = ?, stu_class ?, major = ?";
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, student.getStuId());
+            pre.setString(2, student.getStuName());
+            pre.setInt(3,student.getStuClass());
+            pre.setString(4,student.getMajor());
+            pre.execute();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(resultSet, pre, con);
+        }
+    }
 }
