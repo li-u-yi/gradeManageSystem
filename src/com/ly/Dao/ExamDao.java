@@ -56,7 +56,7 @@ public class ExamDao {
                         scoreDto.setPassOrNot("未录入");
                     }
                 }else {
-                    if (resultSet.getInt("score") > 60) {
+                    if (resultSet.getInt("score") >= 60) {
                     scoreDto.setPassOrNot("通过");
                     scoreDto.setColor("success");
                     } else {
